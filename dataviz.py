@@ -122,10 +122,9 @@ def display(df) :
 if __name__ == "__main__":
     df =   pd.read_csv('https://jtellier.fr/DataViz/full_2020.csv', delimiter = ',')
     df = df.sample(n=50000)
-    fig, ax = plt.subplots(figsize=(10, 7))
+    create_pie(df)
     a = display(df)
     create_map(a)
     create_subplot(a)
     create_hist1(a)
     create_hist2(a)
-    create_pie(a)
