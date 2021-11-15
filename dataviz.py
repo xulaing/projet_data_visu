@@ -26,6 +26,7 @@ def log(func):
     return wrapper
 
 @st.cache(suppress_st_warning=True)
+@log
 def create_map(sub_df):
     sub_df['latitude']=pd.to_numeric(sub_df['latitude'])
     sub_df['longitude']=pd.to_numeric(sub_df['longitude'])
@@ -58,6 +59,7 @@ def create_subplot(sub_df):
     st.line_chart(sub_df['valeur_fonciere'])
 
 @st.cache(suppress_st_warning=True)
+@log
 def create_pie(sub_df):
     local_count = sub_df['type_local'].value_counts()
     local_count = pd.DataFrame({'Names' :local_count.index, 'Values' :local_count.values})
@@ -120,8 +122,8 @@ def display(df) :
     return data_set
 
 if __name__ == "__main__":
-    df =   pd.read_csv('https://jtellier.fr/DataViz/full_2020.csv', delimiter = ',')
-    df = df.sample(n=50000)
+    df = pd.read_csv('sample_2020.csv')
+    #df = df.sample(n=50000)
     create_pie(df)
     a = display(df)
     create_map(a)
