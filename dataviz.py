@@ -122,7 +122,7 @@ def display(df) :
 
 if __name__ == "__main__":
     df =   pd.read_csv('https://jtellier.fr/DataViz/full_2020.csv', delimiter = ',')
-    df = df.sample(n=100000)
+    df = df.sample(n=50000)
     fig, ax = plt.subplots(figsize=(10, 7))
     a = display(df)
     create_map(a)
